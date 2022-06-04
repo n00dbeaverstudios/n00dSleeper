@@ -231,6 +231,11 @@ void AN00dSleeperPawn::MulticastApplyMaterials_Implementation(class USkeletalMes
 		MeshComponent->SetMaterial(OnIndex, Material);
 	}
 }
+// get sleeper meshes
+TArray<USkeletalMeshComponent*> AN00dSleeperPawn::GetSleeperMeshes_Implementation()
+{
+	return TArray<USkeletalMeshComponent*>();
+}
 
 
 	// ANIMATIONS

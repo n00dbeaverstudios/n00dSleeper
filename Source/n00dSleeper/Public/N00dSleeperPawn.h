@@ -207,14 +207,17 @@ public:
 
 
 	// Apply the cached meshes to the skeletal mesh components
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "N00dComponents|Sleeper|Pawn|Callable")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "N00dComponents|Sleeper|Pawn|Meshes")
 		bool ApplyMeshes();
 	// Apply the meshes to this character over the network for other clients to see the change.
-	UFUNCTION(NetMulticast, Reliable, BlueprintCallable, Category = "N00dComponents|Sleeper|Pawn|Callable")
+	UFUNCTION(NetMulticast, Reliable, BlueprintCallable, Category = "N00dComponents|Sleeper|Pawn|Meshes")
 		void MulticastApplyMeshes(class USkeletalMeshComponent* MeshComponent, class USkeletalMesh* Mesh);
 	// Apply the meshes to this character over the network for other clients to see the change.
-	UFUNCTION(NetMulticast, Reliable, BlueprintCallable, Category = "N00dComponents|Sleeper|Pawn|Callable")
+	UFUNCTION(NetMulticast, Reliable, BlueprintCallable, Category = "N00dComponents|Sleeper|Pawn|Meshes")
 		void MulticastApplyMaterials(class USkeletalMeshComponent* MeshComponent, int32 OnIndex, class UMaterialInterface* Material);
+	// Get the meshes that exist on this actor
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, BlueprintPure, Category = "N00dComponents|Sleeper|Pawn|Meshes")
+		TArray<USkeletalMeshComponent*> GetSleeperMeshes();
 	   	  
 
 	// ANIMATIONS

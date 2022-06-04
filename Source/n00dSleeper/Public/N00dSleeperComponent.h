@@ -7,11 +7,11 @@
 #include "Net/UnrealNetwork.h"
 #include "Containers/Array.h"
 #include "FN00dSleeperData.h"
-#include "FN00dSleeperSettings.h"
 #include "N00dSleeperActor.h"
 #include "N00dSleeperPawn.h"
 #include "GameFramework/SaveGame.h"
 #include "Animation/AnimInstance.h"
+#include "N00dSettingsSleeper.h"
 
 #include "N00dSleeperComponent.generated.h"
 
@@ -58,9 +58,6 @@ public:
 // CONTROLLER
 
 
-	// The primary settings for the system
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Controller")
-		struct FN00dSleeperSettings SleeperSettings;
 	// The mutatable data the sleepers require
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Controller")
 		struct FN00dSleeperData SleeperData;
@@ -136,6 +133,9 @@ public:
 	UFUNCTION(Client, Reliable, BlueprintCallable, Category = "N00dComponents|Sleeper|Controller")
 		void SetWidgetVisibility(UWidgetComponent* SleeperWidget, bool NewVisibility);
 
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "N00dComponents|Sleeper|Controller")
+		void GetSleeperSettings(UN00dSettingsSleeper* & Settings);
+
 		   	 
 ///////////////////// FUNCTIONS (GAME MODE) /////////////////////
 
@@ -196,7 +196,7 @@ public:
 	// SPAWNING
 
 
-	// Handle what happens when the player exits a server - called on EndPlay on the Character
+	// Cache the meshes and reference to the owner
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "N00dComponents|Sleeper|Character")
 		bool InitialiseSleeperPlayer(class ACharacter* Owner, const TArray<USkeletalMeshComponent*> &SkeletalComponents);
 	// Handle what happens when the player exits a server - called on EndPlay on the Character if logging out, or from the client input if invoking sleep manually

@@ -10,6 +10,9 @@ UN00dSleeperComponent::UN00dSleeperComponent()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = false; // Disable Tick as we will be using the owning actor for ticking anything
 	// ...
+	
+
+
 }
 // Called when the game starts
 void UN00dSleeperComponent::BeginPlay()
@@ -36,6 +39,7 @@ void UN00dSleeperComponent::SetSleeperData(FN00dSleeperData Data)
 {
 	SleeperData = Data;
 }
+
 // Set widget visibility
 void UN00dSleeperComponent::SetWidgetVisibility_Implementation(UWidgetComponent * SleeperWidget, bool NewVisibility)
 {
@@ -43,6 +47,17 @@ void UN00dSleeperComponent::SetWidgetVisibility_Implementation(UWidgetComponent 
 	{
 		SleeperWidget->SetVisibility(NewVisibility, false);
 	}
+}
+// get sleeper settings
+void UN00dSleeperComponent::GetSleeperSettings(UN00dSettingsSleeper*& Settings)
+{
+//////////////////////////////////////////////////////////////////////
+// GET DATA FROM THE PROJECT SETTINGS
+
+	Settings = GetMutableDefault<UN00dSettingsSleeper>();
+
+// GET DATA FROM THE PROJECT SETTINGS
+//////////////////////////////////////////////////////////////////////
 }
 
 

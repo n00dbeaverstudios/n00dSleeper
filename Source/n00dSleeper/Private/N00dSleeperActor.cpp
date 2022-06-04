@@ -210,6 +210,11 @@ void AN00dSleeperActor::MulticastApplyMaterials_Implementation(class USkeletalMe
 		MeshComponent->SetMaterial(OnIndex, Material);
 	}
 }
+// get sleeper meshes
+TArray<USkeletalMeshComponent*> AN00dSleeperActor::GetSleeperMeshes_Implementation()
+{
+	return TArray<USkeletalMeshComponent*>();
+}
 
 
 // ANIMATIONS
@@ -344,3 +349,5 @@ int32 AN00dSleeperActor::GenericArray_AddToInventory(void* TargetArray, const FA
 }
 ///////////////////////////////////////////////////////////////////
 */
+
+

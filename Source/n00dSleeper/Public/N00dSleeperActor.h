@@ -254,6 +254,9 @@ public:
 	// Apply the meshes to this character over the network for other clients to see the change.
 	UFUNCTION(NetMulticast, Reliable, BlueprintCallable, Category = "N00dComponents|Sleeper|Actor|Meshes")
 		void MulticastApplyMaterials(class USkeletalMeshComponent* MeshComponent, int32 OnIndex, class UMaterialInterface* Material);
+	// Get the meshes that exist on this actor
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, BlueprintPure, Category = "N00dComponents|Sleeper|Actor|Meshes")
+		TArray<USkeletalMeshComponent*> GetSleeperMeshes();
 
 
 	// ANIMATIONS
