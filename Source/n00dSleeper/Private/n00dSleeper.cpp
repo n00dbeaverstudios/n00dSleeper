@@ -32,7 +32,7 @@ bool Fn00dSleeperModule::SupportsDynamicReloading()
 bool Fn00dSleeperModule::HandleSettingsSaved()
 {
 
-	UN00dSettingsSleeper* Settings = GetMutableDefault<UN00dSettingsSleeper>();
+	UN00dSleeperSettings* Settings = GetMutableDefault<UN00dSleeperSettings>();
 	bool ResaveSettings = false;
 
 	// You can put any validation code in here and resave the settings in case an invalid
@@ -65,7 +65,7 @@ void Fn00dSleeperModule::RegisterSettings()
 		ISettingsSectionPtr SettingsSection = SettingsModule->RegisterSettings("Project", "n00d", "Sleeper",
 			LOCTEXT("RuntimeGeneralSettingsName", "Sleeper"),
 			LOCTEXT("RuntimeGeneralSettingsDescription", "n00dSleeper Settings"),
-			GetMutableDefault<UN00dSettingsSleeper>()
+			GetMutableDefault<UN00dSleeperSettings>()
 		);
 
 		// Register the save handler to your settings, you might want to use it to

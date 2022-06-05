@@ -6,7 +6,7 @@
 #include "FN00dSleeperData.h"
 #include "UObject/Interface.h"
 #include "N00dSleeperComponent.h"
-#include "N00dSettingsSleeper.h"
+#include "N00dSleeperSettings.h"
 
 #include "N00dSleeperInterface.generated.h"
 
@@ -35,7 +35,7 @@ public:
 	///////////////////// GETTERS /////////////////////
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "N00dComponents|Sleeper|Interface|Controller")
-		void N00dGetSleeperSettings(UN00dSettingsSleeper* & SleeperSettings, USaveGame* & SaveGame);
+		void N00dGetSleeperSettings(UN00dSleeperSettings* & SleeperSettings, USaveGame* & SaveGame);
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "N00dComponents|Sleeper|Interface|Controller")
 		void N00dGetSleeperID(FString &SleeperID);
@@ -52,6 +52,9 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "N00dComponents|Sleeper|Interface|Controller")
 		void N00dSleeperBroadcastMessage(const FText &Message);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "N00dComponents|Sleeper|Interface|Controller")
+		void N00dSetExampleSleeperMesh (const FString & ForComponent, USkeletalMesh* NewMesh);
 
 	// Sleeper
 

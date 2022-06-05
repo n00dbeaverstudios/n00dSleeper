@@ -49,12 +49,12 @@ void UN00dSleeperComponent::SetWidgetVisibility_Implementation(UWidgetComponent 
 	}
 }
 // get sleeper settings
-void UN00dSleeperComponent::GetSleeperSettings(UN00dSettingsSleeper*& Settings)
+void UN00dSleeperComponent::GetSleeperSettings(UN00dSleeperSettings*& Settings)
 {
 //////////////////////////////////////////////////////////////////////
 // GET DATA FROM THE PROJECT SETTINGS
 
-	Settings = GetMutableDefault<UN00dSettingsSleeper>();
+	Settings = GetMutableDefault<UN00dSleeperSettings>();
 
 // GET DATA FROM THE PROJECT SETTINGS
 //////////////////////////////////////////////////////////////////////

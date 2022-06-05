@@ -11,7 +11,7 @@
 #include "N00dSleeperPawn.h"
 #include "GameFramework/SaveGame.h"
 #include "Animation/AnimInstance.h"
-#include "N00dSettingsSleeper.h"
+#include "N00dSleeperSettings.h"
 
 #include "N00dSleeperComponent.generated.h"
 
@@ -134,7 +134,7 @@ public:
 		void SetWidgetVisibility(UWidgetComponent* SleeperWidget, bool NewVisibility);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "N00dComponents|Sleeper|Controller")
-		void GetSleeperSettings(UN00dSettingsSleeper* & Settings);
+		void GetSleeperSettings(UN00dSleeperSettings* & Settings);
 
 		   	 
 ///////////////////// FUNCTIONS (GAME MODE) /////////////////////
