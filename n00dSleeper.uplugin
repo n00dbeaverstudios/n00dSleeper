@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "2.0.1",
+	"VersionName": "2.0.2",
 	"FriendlyName": "n00dSleeper",
 	"Description": "n00dSleeper is your plug and play multiplayer PlayerStart solution with logout / login sleeping functionality, for persistent world data for offline players.",
 	"Category": "n00d",
