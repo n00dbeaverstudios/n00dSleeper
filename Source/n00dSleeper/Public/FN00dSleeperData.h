@@ -17,9 +17,9 @@ struct FN00dSleeperData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "N00dComponents|Sleeper|Data")
 		FN00dSleeperPlayerData PlayerData;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "N00dComponents|Sleeper|Data")
-		TArray<USkeletalMesh*> Meshes;
+		TArray<TObjectPtr<USkeletalMesh>> Meshes;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "N00dComponents|Sleeper|Data")
-		TArray<UMaterialInterface*> Materials;
+		TArray<TObjectPtr<UMaterialInterface>> Materials;
 
 	// Default Constructor
 	FN00dSleeperData()

@@ -36,25 +36,25 @@ public:
 
 	// Owner of the sleeper actor
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = default)
-		class APlayerController* OwningController;
+		TObjectPtr<APlayerController> OwningController;
 	// Mesh Component to use as the representation of the logged out player character.
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
 		FString SleeperOwnerID;
 	// Skeletal mesh component cache 
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		TArray<USkeletalMeshComponent*> MeshComponents;
+		TArray<TObjectPtr<USkeletalMeshComponent>> MeshComponents;
 	// Cache the meshes on this actor 
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Actor|Config")
-		TArray<USkeletalMesh*> CachedMeshes;
+		TArray<TObjectPtr<USkeletalMesh>> CachedMeshes;
 	// Cache the materials on this actor/
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Actor|Config")
-		TArray<UMaterialInterface*> CachedMaterials;
+		TArray<TObjectPtr<UMaterialInterface>> CachedMaterials;
 	// The name of the owner of the sleeper
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
 		FText SleeperName;
 	// Cache the meshes on this actor 
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Actor|Config")
-		TArray<class ACharacter*> CachedProxies;
+		TArray<TObjectPtr<ACharacter>> CachedProxies;
 
 
 	// DAMAGE
@@ -68,10 +68,10 @@ public:
 		float MaxHealth;
 	// Max Health 
 	UPROPERTY(BlueprintReadWrite, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		class AController* DamageInstigator;
+		TObjectPtr<AController> DamageInstigator;
 	// Max Health 
 	UPROPERTY(BlueprintReadWrite, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		class AActor* DamageCauser;
+		TObjectPtr<AActor> DamageCauser;
 
 
 // ACTOR SETTINGS PROPERTIES
@@ -103,13 +103,13 @@ public:
 		float SleeperWidgetCloseDelay;
 	// The class of save game to interface with for if this sleeper has any changes made to it, we want to save those to the server. 
 	UPROPERTY(BlueprintReadOnly, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		class USaveGame* SleeperSaveGame;
+		TObjectPtr<USaveGame> SleeperSaveGame;
 	// The class of save game to interface with for if this sleeper has any changes made to it, we want to save those to the server. 
 	UPROPERTY(BlueprintReadOnly, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
 		FString SleeperSaveSlot;
 	// Independent from bUseProximity to display a 3D widget on the sleeper for N duration. Will not do anything if overlap exists. 
 	UPROPERTY(BlueprintReadOnly, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		class UWidgetComponent* SleeperWidgetComponent;
+		TObjectPtr<UWidgetComponent> SleeperWidgetComponent;
 
 		
 	// ANIMATIONS
@@ -117,16 +117,16 @@ public:
 
 	// Loaded animation from soft reference. 
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		class UAnimSequence* LoadedToSleepAnimation;
+		TObjectPtr<UAnimSequence> LoadedToSleepAnimation;
 	// Loaded animation from soft reference. 
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		class UAnimSequence* LoadedSleepLoopAnimation;
+		TObjectPtr<UAnimSequence> LoadedSleepLoopAnimation;
 	// Loaded animation from soft reference. 
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		class UAnimSequence* LoadedHitAnimation;
+		TObjectPtr<UAnimSequence> LoadedHitAnimation;
 	// Loaded animation from soft reference. 
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		class UAnimSequence* LoadedDeathAnimation;
+		TObjectPtr<UAnimSequence> LoadedDeathAnimation;
 
 
 
@@ -136,15 +136,15 @@ private:
 	   	 
 	// Root 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		class USceneComponent* Root;
+		TObjectPtr<USceneComponent> Root;
 
 	// Mesh Component to use as the representation of the logged out player character.
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"), Category = default)
-		class USkeletalMeshComponent* SleeperMesh;
+		TObjectPtr<USkeletalMeshComponent> SleeperMesh;
 
 	// Used to show or hide the widget depending on distance to the interacting player
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		class USphereComponent* Proximity;
+		TObjectPtr<USphereComponent> Proximity;
 
 #if WITH_EDITORONLY_DATA
 	// Component shown in the editor only to indicate character facing
@@ -204,7 +204,7 @@ public:
 		void ToLoop();
 	// Set a reference to the actor's widget
 	UFUNCTION(BlueprintCallable, Category = "N00dComponents|Sleeper|Actor|Initialise")
-		void SetSleeperActorParameters(bool BDeath, float DDelay, bool UseProxy, float ProxyRadius, bool WOnDamage, float WDelay, USaveGame * SGame, const FString & SSlot);
+		void SetSleeperActorParameters(bool BDeath, float DDelay, bool UseProxy, float ProxyRadius, bool WOnDamage, float WDelay, class USaveGame* SGame, const FString & SSlot);
 
 
 	// DAMAGE
@@ -212,7 +212,7 @@ public:
 
 	// Damage the sleeper.
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "N00dComponents|Sleeper|Actor|Damage")
-		bool DamageSleeper(float DamageAmount, AController* DInstigator, AActor* DCauser, TSubclassOf<UDamageType> DamageTypeClass);
+		bool DamageSleeper(float DamageAmount, class AController* DInstigator, class AActor* DCauser, TSubclassOf<UDamageType> DamageTypeClass);
 	// What to do when the sleeper is hit.
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "N00dComponents|Sleeper|Actor|Damage")
 		bool SleeperHit();
@@ -256,7 +256,7 @@ public:
 		void MulticastApplyMaterials(class USkeletalMeshComponent* MeshComponent, int32 OnIndex, class UMaterialInterface* Material);
 	// Get the meshes that exist on this actor
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, BlueprintPure, Category = "N00dComponents|Sleeper|Actor|Meshes")
-		TArray<USkeletalMeshComponent*> GetSleeperMeshes();
+		TArray<class USkeletalMeshComponent*> GetSleeperMeshes();
 
 
 	// ANIMATIONS
@@ -284,10 +284,10 @@ public:
 		bool AreProxiesValid();
 	// Add the player to the registered proximity actors
 	UFUNCTION(BlueprintCallable, Category = "N00dComponents|Sleeper|Actor|Proximity")
-		bool AddPlayerToProxies(ACharacter * Player);
+		bool AddPlayerToProxies(class ACharacter * Player);
 	// Remove the player from the registered proximity actors
 	UFUNCTION(BlueprintCallable, Category = "N00dComponents|Sleeper|Actor|Proximity")
-		bool RemovePlayerFromProxies(ACharacter * Player);
+		bool RemovePlayerFromProxies(class ACharacter* Player);
 
 
 	// SAVE LOAD

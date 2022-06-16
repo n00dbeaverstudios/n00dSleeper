@@ -49,7 +49,7 @@ public:
 		bool DisableComponent;
 	// Should we disable the component
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Character")
-		class APlayerController* OwningController;
+		TObjectPtr<APlayerController> OwningController;
 	/** Mesh Component to use as the representation of the logged out player character. */
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
 		FString SleeperOwnerID;
@@ -68,10 +68,10 @@ public:
 
 	// The active cache of sleeper actors that exist on the server
 	UPROPERTY(BlueprintReadWrite, Category = "N00dComponents|Sleeper|Game Mode")
-		TArray<class AN00dSleeperActor*> SleeperCache;
+		TArray<TObjectPtr<AN00dSleeperActor>> SleeperCache;
 	// The active cache of players whom exist on the server
 	UPROPERTY(BlueprintReadOnly, Category = "N00dComponents|Sleeper|Game Mode")
-		TArray<class APlayerController*>PlayerCache;
+		TArray<TObjectPtr<APlayerController>>PlayerCache;
 
 
 // CHARACTER
@@ -79,25 +79,25 @@ public:
 
 	// Skeletal mesh component cache
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = default)
-		TArray<USkeletalMeshComponent*> MeshComponents;
+		TArray<TObjectPtr<USkeletalMeshComponent>> MeshComponents;
 	// Skeletal mesh component cache
 	UPROPERTY(BlueprintReadOnly, Category = default)
-		class ACharacter* OwningCharacter;
+		TObjectPtr<ACharacter> OwningCharacter;
 	// Skeletal mesh references from the built components
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = default)
-		TArray<USkeletalMesh*> CharacterMeshes;
+		TArray<TObjectPtr<USkeletalMesh>> CharacterMeshes;
 	// An array containing all of the mesh materials in order of set
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = default)
-		TArray<UMaterialInterface*> CharacterMaterials;
+		TArray<TObjectPtr<UMaterialInterface>> CharacterMaterials;
 	// The looping animation from the actor
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = default)
-		class UAnimSequence* LoadedSleepLoop;
+		TObjectPtr<UAnimSequence> LoadedSleepLoop;
 	// Loaded animation from soft reference. 
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = default)
-		class UAnimSequence* LoadedFromSleep;
+		TObjectPtr<UAnimSequence> LoadedFromSleep;
 	// Loaded animation from soft reference. 
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = default)
-		class UAnimSequence* LoadedToSleep;
+		TObjectPtr<UAnimSequence> LoadedToSleep;
 	// Is the player asleep.
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = default)
 		bool Asleep;

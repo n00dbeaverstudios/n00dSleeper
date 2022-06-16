@@ -39,16 +39,16 @@ public:
 
 	// Root
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Pawn|Do Not Edit")
-		class USceneComponent* Root;
+		TObjectPtr<USceneComponent> Root;
 	// Mesh Component to use as the representation of the logged out player character.
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = default)
-		class USkeletalMeshComponent* SleeperMesh;
+		TObjectPtr<USkeletalMeshComponent> SleeperMesh;
 	// Camera boom
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = default)
-		class USpringArmComponent* CameraBoom;
+		TObjectPtr<USpringArmComponent> CameraBoom;
 	// Camera for the pawn
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = default)
-		class UCameraComponent* Camera;
+		TObjectPtr<UCameraComponent> Camera;
 	
 
 	// SLEEPER SETTINGS
@@ -59,19 +59,19 @@ public:
 		bool Triggered;
 	// The meshes for the sleeper, taken from the sleeper actor
 	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Pawn|Config")
-		TArray <USkeletalMesh*> SleeperMeshes;
+		TArray <TObjectPtr<USkeletalMesh>> SleeperMeshes;
 	// The materials on all of the meshes
 	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Pawn|Config")
-		TArray<UMaterialInterface*> SleeperMaterials;
+		TArray<TObjectPtr<UMaterialInterface>> SleeperMaterials;
 	// Should the system wait for player input before waking up - if this is disabled we wake up instantly
 	UPROPERTY(BlueprintReadOnly, Category = "N00dComponents|Sleeper|Pawn|Do Not Edit")
 		bool WaitForPlayerInput;
 	// The looping animation from the actor
 	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, Category = "N00dComponents|Sleeper|Pawn|Config")
-		class UAnimSequence* SleeperLoop;
+		TObjectPtr<UAnimSequence> SleeperLoop;
 	// Loaded animation from soft reference. 
 	UPROPERTY(Replicated, BlueprintReadWrite, Category = "N00dComponents|Sleeper|Actor|Do Not Edit")
-		class UAnimSequence* LoadedFromSleepAnimation;
+		TObjectPtr<UAnimSequence> LoadedFromSleepAnimation;
 
 
 	// INITIALISE
@@ -79,13 +79,13 @@ public:
 
 	// The owning controller of this pawn
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = default)
-		class APlayerController *OwningController;
+		TObjectPtr<APlayerController> OwningController;
 	// The owning sleeper actor that represented this player whilst logged out
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = default)
-		class AN00dSleeperActor *OwningSleeperActor;
+		TObjectPtr<AN00dSleeperActor> OwningSleeperActor;
 	/* Skeletal mesh component cache */
 	UPROPERTY(BlueprintReadWrite, Category = "N00dComponents|Sleeper|Pawn|Do Not Edit")
-		TArray<USkeletalMeshComponent*> MeshComponents;
+		TArray<TObjectPtr<USkeletalMeshComponent>> MeshComponents;
 	/** OnRep notify for when the mesh components are built */
 	UPROPERTY(BlueprintReadWrite, Category = "N00dComponents|Sleeper|Pawn|Config")
 		bool OwnerMeshesBuilt;
