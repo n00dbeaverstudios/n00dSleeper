@@ -10,7 +10,7 @@
 	"DocsURL": "https://n00dsleeper.n00dbeaverstudios.com/",
 	"MarketplaceURL": "https://publish.unrealengine.com/v3/edit-product/8a4ad0b06a324732a236fc22cfeb9c0b",
 	"SupportURL": "epicgames@n00dbeaverstudios.com",
-	"EngineVersion": "4.27.0",
+	"EngineVersion": "5.0",
 	"CanContainContent": true,
 	"Installed": true,
 	"Modules": [
